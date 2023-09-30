@@ -45,7 +45,7 @@ export default function Resume({ navigation }: any) {
       style={style.list}
       showsVerticalScrollIndicator={false}
     />
-    <TouchableOpacity style={style.button}>
+    <TouchableOpacity style={style.button} onPress={() => navigation.navigate('Finalizar Compras')}>
       <Text style={style.buttonText}>Finalizar</Text>
     </TouchableOpacity>
   </View>
