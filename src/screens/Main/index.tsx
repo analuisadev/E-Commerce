@@ -14,12 +14,12 @@ import { styles } from './styles';
 
 import { ThemeContext } from '../../context/ThemeContext';
 import { AuthenticationContext } from '../../context/AuthenticationContext';
+import { ProductsContext } from '../../context/ProductsContext';
 
 export default function Main({ navigation }: any) {
-  const recentlySeen: Array<Object> = [];
-
   const { chosenTheme } = useContext(ThemeContext);
   const { user } = useContext(AuthenticationContext);
+  const { amount, lastSeen } = useContext(ProductsContext);
 
   const style = styles(chosenTheme);
 
@@ -31,9 +31,9 @@ export default function Main({ navigation }: any) {
         <TouchableOpacity onPress={() => { }}>
           <Feather name="shopping-cart" size={30} color="#fff" style={style.cartIcon} />
         </TouchableOpacity>
-        <View style={style.cartQuantityArea}>
-          <Text style={style.cartQuantity}>0</Text>
-        </View>
+        {amount > 0 && <View style={style.cartQuantityArea}>
+          <Text style={style.cartQuantity}>{amount}</Text>
+        </View>}
         <TouchableOpacity onPress={() => navigation.navigate('Configurações')} style={style.iconArea} >
           <MaterialCommunityIcons name="settings" size={30} color="#fff" style={style.icon} />
         </TouchableOpacity>
@@ -48,11 +48,11 @@ export default function Main({ navigation }: any) {
       showsVerticalScrollIndicator={false}
       ListHeaderComponent={() =>
         <View>
-          {recentlySeen.length > 0 &&
+          {lastSeen.length > 0 &&
             <View style={style.recentlySeen}>
               <Text style={style.titleLastSeen}>Últimos vistos</Text>
               <FlatList
-                data={recentlySeen}
+                data={lastSeen}
                 keyExtractor={(item) => Math.random()}
                 renderItem={({ item }) => <Product item={item} add={false} />}
                 style={style.list}
@@ -65,6 +65,4 @@ export default function Main({ navigation }: any) {
       }
     />
   </View>
-
 }
-

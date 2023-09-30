@@ -22,7 +22,6 @@ export default function AuthenticationProvider({ children }: any) {
     return (
         <AuthenticationContext.Provider value={{
             user,
-            setUser,
             login
         }}>
             {children}

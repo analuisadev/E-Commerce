@@ -1,8 +1,12 @@
 import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { ProductsContext } from '../../context/ProductsContext';
+import { useContext } from 'react';
 
 import styles from './styles';
 
 export default function Product({ item, add }) {
+  const { seenProduct } = useContext(ProductsContext);
+
   return (
     <View style={styles.card}>
       <Image style={styles.image} source={item.image}/>
@@ -11,7 +15,7 @@ export default function Product({ item, add }) {
         <Text style={styles.price}>R$ {item.price}</Text>
       </View>
       { add &&
-      <TouchableOpacity style={styles.buttonAdd} onPress={() => {}}>
+      <TouchableOpacity style={styles.buttonAdd} onPress={() => seenProduct(item)}>
         <Text style={styles.buttonText}>+</Text>
       </TouchableOpacity>}
     </View>
