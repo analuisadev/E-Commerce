@@ -7,7 +7,7 @@ import { styles } from './styles';
 import { ThemeContext } from '../../context/ThemeContext';
 
 export default function Configuration({ navigation }: any) {
-  const { currentTheme, setCurrentTheme, chosenTheme } = useContext(ThemeContext);
+  const { currentTheme, chosenTheme, saveData } = useContext(ThemeContext);
 
   const style = styles(chosenTheme);
 
@@ -18,8 +18,8 @@ export default function Configuration({ navigation }: any) {
       <Text style={style.subTitle}>Tema: {currentTheme}</Text>
       <Switch
         onValueChange={() => currentTheme === 'dark' ?
-          setCurrentTheme('light') :
-          setCurrentTheme('dark')
+          saveData('light') :
+          saveData('dark')
         }
         value={currentTheme === 'dark' ? true : false}
       />
