@@ -17,8 +17,8 @@
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- [React Native][rn]
-- [Expo][expo]
+- React Native
+- Expo
 
 ## 💻 Projeto
 
