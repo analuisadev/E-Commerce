@@ -6,8 +6,6 @@ import Feather from 'react-native-vector-icons/Feather';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/Feather';
 
-import { products } from './products';
-
 import Product from '../../components/Product';
 
 import { styles } from './styles';
@@ -16,10 +14,10 @@ import { ThemeContext } from '../../context/ThemeContext';
 import { AuthenticationContext } from '../../context/AuthenticationContext';
 import { ProductsContext } from '../../context/ProductsContext';
 
-export default function Main({ navigation }: any) {
+export default function Resume({ navigation }: any) {
   const { chosenTheme } = useContext(ThemeContext);
   const { user } = useContext(AuthenticationContext);
-  const { amount, lastSeen } = useContext(ProductsContext);
+  const { amount, shoppingCart } = useContext(ProductsContext);
 
   const style = styles(chosenTheme);
 
@@ -28,7 +26,7 @@ export default function Main({ navigation }: any) {
     <View style={style.titleArea}>
       <Text style={style.title}>Olá, {user?.name}</Text>
       <View style={style.cartArea}>
-        <TouchableOpacity onPress={() => navigation.navigate('Resumo de Compras')}>
+        <TouchableOpacity onPress={() => { }}>
           <Feather name="shopping-cart" size={30} color="#fff" style={style.cartIcon} />
         </TouchableOpacity>
         {amount > 0 && <View style={style.cartQuantityArea}>
@@ -41,28 +39,14 @@ export default function Main({ navigation }: any) {
     </View>
 
     <FlatList
-      data={products}
+      data={shoppingCart}
       keyExtractor={(item) => Math.random()}
-      renderItem={({ item }) => <Product item={item} add={true} />}
+      renderItem={({ item }) => <Product item={item} add={false} />}
       style={style.list}
       showsVerticalScrollIndicator={false}
-      ListHeaderComponent={() =>
-        <View>
-          {lastSeen.length > 0 &&
-            <View style={style.recentlySeen}>
-              <Text style={style.titleLastSeen}>Últimos vistos</Text>
-              <FlatList
-                data={lastSeen}
-                keyExtractor={(item) => Math.random()}
-                renderItem={({ item }) => <Product item={item} add={false} />}
-                style={style.list}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-              />
-            </View>}
-          <Text style={[style.title, { paddingLeft: 16 }]}>Produtos</Text>
-        </View>
-      }
     />
+    <TouchableOpacity style={style.button}>
+      <Text style={style.buttonText}>Finalizar</Text>
+    </TouchableOpacity>
   </View>
 }
