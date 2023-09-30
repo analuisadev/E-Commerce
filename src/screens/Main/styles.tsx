@@ -4,81 +4,83 @@ import Constants from 'expo-constants';
 
 import { theme } from '../../globalStyles';
 
-export default StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: theme.background,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+export const styles = (theme: any) => {
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme.background,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
 
-  titleArea: {
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    flexDirection: 'row',
-    paddingTop: Constants.statusBarHeight,
-    marginBottom: 16,
-  },
+    titleArea: {
+      width: '100%',
+      alignItems: 'center',
+      justifyContent: 'space-around',
+      flexDirection: 'row',
+      paddingTop: Constants.statusBarHeight,
+      marginBottom: 16,
+    },
 
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: theme.title,
-  },
+    title: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: theme.title,
+    },
 
-  list: {
-    flex: 1,
-    width: '100%',
-  },
+    list: {
+      flex: 1,
+      width: '100%',
+    },
 
-  recentlySeen: {
-    marginBottom: 16,
-    paddingVertical: 16,
-    backgroundColor: theme.recentlySeen,
-  },
+    recentlySeen: {
+      marginBottom: 16,
+      paddingVertical: 16,
+      backgroundColor: theme.recentlySeen,
+    },
 
-  titleLastSeen: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: theme.title,
-    marginHorizontal: 16,
-    marginBottom: 8,
-  },
+    titleLastSeen: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: theme.title,
+      marginHorizontal: 16,
+      marginBottom: 8,
+    },
 
-  cartArea: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-  },
+    cartArea: {
+      flexDirection: 'row',
+      alignItems: 'flex-end',
+      justifyContent: 'flex-end',
+    },
 
-  cartIcon: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: theme.title,
-  },
+    cartIcon: {
+      fontSize: 30,
+      fontWeight: 'bold',
+      color: theme.title,
+    },
 
-  cartQuantityArea: {
-    backgroundColor: 'red',
-    borderRadius: 10,
-    width: 20,
-    height: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    cartQuantityArea: {
+      backgroundColor: 'red',
+      borderRadius: 10,
+      width: 20,
+      height: 20,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
 
-  cartQuantity: {
-    fontSize: 12,
-    fontWeight: 'bold',
-    color: "#fff",
-  },
+    cartQuantity: {
+      fontSize: 12,
+      fontWeight: 'bold',
+      color: "#fff",
+    },
 
-  iconArea: {
-    marginLeft: 16,
-  },
+    iconArea: {
+      marginLeft: 16,
+    },
 
-  icon: {
-    color: theme.text,
-    fontSize: 30,
-  },
-});
+    icon: {
+      color: theme.text,
+      fontSize: 30,
+    },
+  })
+};

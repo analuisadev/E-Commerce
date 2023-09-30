@@ -1,20 +1,27 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import { Text, View, Switch } from 'react-native';
 
-import styles from './styles';
+import { styles } from './styles';
+
+import { ThemeContext } from '../../context/ThemeContext';
 
 export default function Configuration({ navigation }: any) {
-  const [state, setState] = useState(true);
+  const { currentTheme, setCurrentTheme, chosenTheme } = useContext(ThemeContext);
 
-  return <View style={styles.container}>
-    <Text style={styles.title}>Configuração</Text>
+  const style = styles(chosenTheme);
 
-    <View style={styles.inputArea}>
-      <Text style={styles.subTitle}>Tema: Escuro</Text>
+  return <View style={style.container}>
+    <Text style={style.title}>Configuração</Text>
+
+    <View style={style.inputArea}>
+      <Text style={style.subTitle}>Tema: {currentTheme}</Text>
       <Switch
-        onValueChange={() => setState(!state)}
-        value={state}
+        onValueChange={() => currentTheme === 'dark' ?
+          setCurrentTheme('light') :
+          setCurrentTheme('dark')
+        }
+        value={currentTheme === 'dark' ? true : false}
       />
     </View>
   </View>
