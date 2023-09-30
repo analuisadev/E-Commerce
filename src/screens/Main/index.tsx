@@ -13,18 +13,20 @@ import Product from '../../components/Product';
 import { styles } from './styles';
 
 import { ThemeContext } from '../../context/ThemeContext';
+import { AuthenticationContext } from '../../context/AuthenticationContext';
 
 export default function Main({ navigation }: any) {
   const recentlySeen: Array<Object> = [];
 
   const { chosenTheme } = useContext(ThemeContext);
+  const { user } = useContext(AuthenticationContext);
 
   const style = styles(chosenTheme);
 
   return <View style={style.container}>
     <StatusBar />
     <View style={style.titleArea}>
-      <Text style={style.title}>Olá, NOME</Text>
+      <Text style={style.title}>Olá, {user?.name}</Text>
       <View style={style.cartArea}>
         <TouchableOpacity onPress={() => { }}>
           <Feather name="shopping-cart" size={30} color="#fff" style={style.cartIcon} />
